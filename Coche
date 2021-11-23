@@ -1,0 +1,116 @@
+package boletin12_1;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author dam1
+ */
+public class Coche {
+
+    private String matricula;
+    private int horaEntrada;
+    private int minutoEntrada;
+
+    private int horaSalida;
+    private int minutoSalida;
+
+    public Coche() {
+    }
+
+    public Coche(String matricula, int horaEntrada, int minutoEntrada, int horaSalida, int minutoSalida) {
+        this.matricula = matricula;
+        this.horaEntrada = horaEntrada;
+        this.minutoEntrada = minutoEntrada;
+
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getHoraEntrada() {
+        return horaEntrada;
+    }
+
+    public void setHoraEntrada(int horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
+
+    public int getMinutoentrada() {
+        return minutoEntrada;
+    }
+
+    public void setMinutoentrada(int minutoEntrada) {
+        this.minutoEntrada = minutoEntrada;
+    }
+
+    public int getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(int horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    public int getMinutoSalida() {
+        return minutoSalida;
+    }
+
+    public void setMinutoSalida(int minutoSalida) {
+        this.minutoSalida = minutoSalida;
+    }
+
+    public Coche cantidadTiempo(Coche ch) {
+        ch = new Coche(matricula, horaEntrada, minutoEntrada, horaSalida, minutoSalida);
+        Calendar horaActual = new GregorianCalendar();
+        matricula = JOptionPane.showInputDialog("Introduzca su matrícula: ");
+        horaEntrada = horaActual.HOUR_OF_DAY;
+        minutoEntrada = horaActual.MINUTE;
+        do{
+        int incTiempo = (int) (Math.floor(Math.random() * (7 - 1)) + 1);
+        int incTiempoMin = (int) (Math.floor(Math.random() * (20 - 1)) + 1);
+        
+            
+            horaSalida=incTiempo+horaEntrada;
+            minutoSalida=incTiempoMin+minutoEntrada;
+        
+        }while(horaSalida<24 && minutoSalida<60);
+      
+
+        return ch;
+    }
+    
+    public float precioPago (Coche ch){
+        float pago=0f;
+        int auxHora=(ch.getHoraSalida()-ch.getHoraEntrada())*60;
+        int auxMin=ch.getMinutoSalida()-ch.getMinutoentrada();
+        int auxTotal=auxHora+auxMin;
+        if(auxTotal<=180){
+            pago= 1.5f;
+            
+            
+            
+        }
+        for(auxTotal;) {
+            
+            
+            
+        }   
+            
+            
+            
+            
+            
+            
+        
+        
+        return pago;
+    }
+}
