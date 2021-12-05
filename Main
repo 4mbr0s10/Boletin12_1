@@ -1,14 +1,36 @@
-
 package boletin12_1;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
  * @author dam1
  */
 public class Boletin12_1 {
-
-    public static void main(String[] args) {
-     
+    
+    public static void main(String[] args)throws IOException {
+        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+        
+        
+        
+        
+        Coche ch = new Coche();
+        ArrayList <Coche> listCh ;
+        ch.cantidadTiempo(ch);
+        System.out.println("-----FACTURA-----\n"
+                + "Matricula coche: " + ch.getMatricula() + "\n"
+                + "Hora entrada: " + ch.getHoraEntrada()+ "." + ch.getMinutoentrada() + "\n"
+                + "Hora salida: " + ch.getHoraSalida() + "." + ch.getMinutoSalida() + "\n"
+                + "Precio: " + ch.precioPago(ch));
+        System.out.println("Introduzca la cantidad con la que paga: ");
+        float pagoCliente=Float.parseFloat(br.readLine());
+        float dev = pagoCliente-ch.precioPago(ch);
+        System.out.println("Aqui está su vuelta : "+dev);
+        
+        
     }
     
 }
