@@ -67,50 +67,48 @@ public class Coche {
         this.minutoSalida = minutoSalida;
     }
 
-    public Coche cantidadTiempo(Coche ch) {
+    public  Coche cantidadTiempo(Coche ch) {
         ch = new Coche(matricula, horaEntrada, minutoEntrada, horaSalida, minutoSalida);
         Calendar horaActual = new GregorianCalendar();
         matricula = JOptionPane.showInputDialog("Introduzca su matrícula: ");
         horaEntrada = horaActual.HOUR_OF_DAY;
+       
         minutoEntrada = horaActual.MINUTE;
-        do{
-        int incTiempo = (int) (Math.floor(Math.random() * (7 - 1)) + 1);
-        int incTiempoMin = (int) (Math.floor(Math.random() * (20 - 1)) + 1);
+     
+        do {
+            int incTiempo = (int) (Math.floor(Math.random() * (7 - 1)) + 1);
+            int incTiempoMin = (int) (Math.floor(Math.random() * (20 - 1)) + 1);
+
+            horaSalida = incTiempo + horaEntrada;
+            minutoSalida = incTiempoMin + minutoEntrada;
+
+        } while (horaSalida > 24 && minutoSalida > 60);
         
-            
-            horaSalida=incTiempo+horaEntrada;
-            minutoSalida=incTiempoMin+minutoEntrada;
-        
-        }while(horaSalida<24 && minutoSalida<60);
-      
 
         return ch;
     }
-    
-    public float precioPago (Coche ch){
-        float pago=0f;
-        int auxHora=(ch.getHoraSalida()-ch.getHoraEntrada())*60;
-        int auxMin=ch.getMinutoSalida()-ch.getMinutoentrada();
-        int auxTotal=auxHora+auxMin;
-        if(auxTotal<=180){
-            pago= 1.5f;
-            
-            
-            
+
+    public float precioPago(Coche ch) {
+        float pago ;
+        int auxHora = (ch.getHoraSalida() - ch.getHoraEntrada()) * 60;
+        System.out.println(auxHora);
+        int auxMin = ch.getMinutoSalida() - ch.getMinutoentrada();
+        int auxTotal = auxHora + auxMin;
+        if (auxTotal <= 180) {
+            pago = 1.5f;
+
+        } else {
+           float auxPago= (auxTotal / 60) - 2;
+            pago = auxPago*0.2f +1.5f;
+
         }
-        for(auxTotal;) {
-            
-            
-            
-        }   
-            
-            
-            
-            
-            
-            
-        
-        
+
         return pago;
     }
+
+    @Override
+    public String toString() {
+        return "Coche{" + "matricula=" + matricula + ", horaEntrada=" + horaEntrada + ", minutoEntrada=" + minutoEntrada + ", horaSalida=" + horaSalida + ", minutoSalida=" + minutoSalida + '}';
+    }
+    
 }
